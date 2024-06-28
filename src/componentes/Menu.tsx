@@ -1,37 +1,60 @@
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image';
+import Link from 'next/link';
 
-const Menu: React.FC = () => {
+const Header: React.FC = () => {
   return (
-    <header className="">
-      <div>
-        <h1>
+    <header className="bg-white">
+      <div className="bg-[#F0F4C3] flex justify-center gap-10 h-16">
+        <h2 className="my-auto font-semibold">
           Organize seu espaço e ofereça mais praticidade para os seus clientes
-        </h1>
-        <Link href="">FALE CONOSCO</Link>
+        </h2>
+        <div className="my-auto">
+          <Link
+            href="#contato"
+            className="bg-[#27AE60] rounded-2xl text-white py-2 px-4"
+          >
+            FALE CONOSCO
+          </Link>
+        </div>
       </div>
-      <div>
-        <img src="/assets/logotipo.png" alt="Imagem do logotipo" />
+      <div className="container mx-auto flex justify-between items-center">
+        <div className="flex items-center">
+          <img
+            src="/assets/logotipo.png"
+            alt="Imagem do logotipo"
+            width={150}
+            height={50}
+          />
+        </div>
+
         <nav>
-          <ul>
+          <ul className="flex justify-between space-x-8 gap-20  text-[#545454]">
             <li>
-              <Link href="">SISTEMAS</Link>
+              <Link href="#sistemas">SISTEMAS</Link>
             </li>
             <li>
-              <Link href="">VALORES</Link>
+              <Link href="#contato">VALORES</Link>
             </li>
             <li>
-              <Link href="">SOBRE NÓS</Link>
+              <Link href="#introducao">SOBRE NÓS</Link>
             </li>
             <li>
-              <Link href="">CONTATO</Link>
+              <Link href="#contato">CONTATO</Link>
             </li>
           </ul>
         </nav>
-        <Link href="">saiba mais</Link>
+
+        <div className="flex space-x-4">
+          <Link
+            href="#perguntas-frequentes"
+            className="bg-[#F0F4C3] py-3 px-10 rounded-2xl font-semibold"
+          >
+            saiba mais
+          </Link>
+        </div>
       </div>
     </header>
   );
 };
 
-export default Menu;
+export default Header;
