@@ -1,15 +1,16 @@
 // @ts-nocheck
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 const Form = () => {
   const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    telefone: '',
-    tipo_reclamacao: '',
-    reclamacao: '',
+    NOME: "",
+    TELEFONE: "",
+    SEGMENTO: "",
+    EMAIL: "",
+    EMPRESA: "",
+    NECESSIDADE: "",
   });
 
   const handleChange = (e) => {
@@ -19,33 +20,26 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataObject = new FormData();
-    Object.keys(formData).forEach((key) => {
-      formDataObject.append(key, formData[key]);
-    });
-
     try {
       const response = await fetch(
-        'https://apikomode.altuori.com/wp-json/api/reclamacao',
+        "https://api.sheetmonkey.io/form/9Vc8moB1qU9mCoWpwcJztK",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            Authorization:
-              'Bearer ' +
-              'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaWtvbW9kZS5hbHR1b3JpLmNvbSIsImlhdCI6MTcxNTY0NDgwMCwibmJmIjoxNzE1NjQ0ODAwLCJleHAiOjI1Nzk2NDQ4MDAsImRhdGEiOnsidXNlciI6eyJpZCI6IjIifX19.tQ-Uuz58JbI2ksAdPJz-6OaBh6TUAE31jsbg84oXshQ',
+            "Content-Type": "application/json",
           },
-          body: formDataObject,
-        },
+          body: JSON.stringify(formData),
+        }
       );
 
       if (response.ok) {
-        alert('Reclamação enviada com sucesso!');
+        alert("Informações enviadas com sucesso!");
       } else {
-        alert('Erro ao enviar reclamação.');
+        alert("Erro ao enviar informalções.");
       }
     } catch (error) {
-      console.error('Erro durante o envio da Reclamação:', error);
-      alert('Erro ao enviar reclamação.');
+      console.error("Erro durante o envio das informações:", error);
+      alert("Erro ao enviar informações.");
     }
   };
 
@@ -66,8 +60,38 @@ const Form = () => {
             <input
               type="text"
               id="nome"
+              name="NOME"
               placeholder="Insira seu nome"
               value={formData.nome}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="telefone" className="block text-[#545454] mb-2">
+              Telefone
+            </label>
+            <input
+              type="tel"
+              id="telefone"
+              name="TELEFONE"
+              placeholder="Insira um número para contato"
+              value={formData.telefone}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded"
+            />
+          </div>
+          <div>
+            <label htmlFor="segmento" className="block text-[#545454] mb-2">
+              Segmento
+            </label>
+            <input
+              type="text"
+              id="segmento"
+              name="SEGMENTO"
+              placeholder="Insira o segmento"
+              value={formData.segmento}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded"
             />
@@ -79,6 +103,7 @@ const Form = () => {
             <input
               type="email"
               id="email"
+              name="EMAIL"
               placeholder="Insira seu e-mail"
               value={formData.email}
               onChange={handleChange}
@@ -86,48 +111,29 @@ const Form = () => {
             />
           </div>
           <div>
-            <label htmlFor="telefone" className="block text-[#545454] mb-2">
-              Telefone
+            <label htmlFor="empresa" className="block text-[#545454] mb-2">
+              Empresa
             </label>
             <input
-              type="tel"
-              id="telefone"
-              placeholder="Insira um número para contato"
-              value={formData.telefone}
+              type="text"
+              id="empresa"
+              name="EMPRESA"
+              placeholder="Insira o nome da empresa"
+              value={formData.empresa}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded"
             />
           </div>
-          <div>
-            <label
-              htmlFor="tipo_reclamacao"
-              className="block text-[#545454] mb-2"
-            >
-              Tipo de Reclamação
-            </label>
-            <select
-              id="tipo_reclamacao"
-              value={formData.tipo_reclamacao}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded"
-            >
-              <option value="">Selecione um tipo</option>
-              <option value="Garantia">Garantia</option>
-              <option value="Pagamento">Pagamento</option>
-              <option value="Entrega">Entrega</option>
-              <option value="Atendimento">Atendimento</option>
-              <option value="Outro">Outro</option>
-            </select>
-          </div>
         </div>
         <div className="mb-8">
-          <label htmlFor="reclamacao" className="block text-[#545454] mb-2">
-            Reclamação
+          <label htmlFor="necessidade" className="block text-[#545454] mb-2">
+            Conte-nos para qual necessidade será o seu sistema.
           </label>
           <textarea
-            id="reclamacao"
-            placeholder="Conte-nos sobre a sua reclamação"
-            value={formData.reclamacao}
+            id="necessidade"
+            name="NECESSIDADE"
+            placeholder="Conte-nos sobre o sistema que planeja para a sua empresa."
+            value={formData.necessidade}
             onChange={handleChange}
             className="w-full p-3 border border-gray-300 rounded h-32"
           ></textarea>

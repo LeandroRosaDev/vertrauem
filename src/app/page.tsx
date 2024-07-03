@@ -1,37 +1,37 @@
 // @ts-nocheck
-'use client';
-import Form from '@/componentes/Form';
-import Link from 'next/link';
-import { useEffect } from 'react';
+"use client";
+import Form from "@/componentes/Form";
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
   function handleAccordionClick(event: React.MouseEvent<HTMLButtonElement>) {
     const button = event.currentTarget;
-    const targetId = button.getAttribute('data-accordion-target');
+    const targetId = button.getAttribute("data-accordion-target");
     const targetElement = document.querySelector(targetId);
 
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', !isExpanded);
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !isExpanded);
 
     if (isExpanded) {
-      targetElement?.classList.add('hidden');
+      targetElement?.classList.add("hidden");
     } else {
-      targetElement?.classList.remove('hidden');
+      targetElement?.classList.remove("hidden");
     }
   }
 
   useEffect(() => {
     const accordionButtons = document.querySelectorAll<HTMLButtonElement>(
-      '[data-accordion-target]',
+      "[data-accordion-target]"
     );
 
     accordionButtons.forEach((button) => {
-      button.addEventListener('click', handleAccordionClick);
+      button.addEventListener("click", handleAccordionClick);
     });
 
     return () => {
       accordionButtons.forEach((button) => {
-        button.removeEventListener('click', handleAccordionClick);
+        button.removeEventListener("click", handleAccordionClick);
       });
     };
   }, []);
@@ -351,9 +351,9 @@ export default function Home() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M9 5 5 1 1 5"
                   />
                 </svg>
@@ -406,9 +406,9 @@ export default function Home() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M9 5 5 1 1 5"
                   />
                 </svg>
@@ -444,9 +444,9 @@ export default function Home() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M9 5 5 1 1 5"
                   />
                 </svg>
@@ -482,9 +482,9 @@ export default function Home() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M9 5 5 1 1 5"
                   />
                 </svg>
@@ -520,9 +520,9 @@ export default function Home() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M9 5 5 1 1 5"
                   />
                 </svg>
@@ -558,9 +558,9 @@ export default function Home() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M9 5 5 1 1 5"
                   />
                 </svg>
